@@ -16,10 +16,13 @@
     "babel-preset-es2015-node4": "^2.0.3",
     "blue-tape": "^0.1.11",
     "co": "^4.6.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^4.0.0",
     "tap-colorize": "^1.2.0"
   },
   "scripts": {
-    "test": "babel-node test | tap-colorize"
+    "test": "babel-node test | tap-colorize",
+    "lint": "eslint index.js test/"
   },
   "author": "",
   "license": "ISC"

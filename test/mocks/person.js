@@ -1,4 +1,4 @@
-function Person() {};
+function Person() {}
 
 Person.isFactoryOf = function isFactoryOf() {
   return true;

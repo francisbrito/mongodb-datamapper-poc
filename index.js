@@ -12,6 +12,10 @@ const MISSING_DB_URI_OPTION_ERROR = new Error('`dbUri` is missing.');
 const MISSING_FACTORY_OPTION_ERROR = new Error('`factory` is missing.');
 const MISSING_COLLECTION_NAME_OPTION_ERROR = new Error('`collectionName` is missing.');
 
+const INVALID_DB_URI_OPTION_ERROR = new Error('`dbUri` is malformed.');
+const INVALID_FACTORY_OPTION_ERROR = new Error('`factory` is invalid.');
+const INVALID_COLLECTION_NAME_OPTION_ERROR = new Error('`collectionName` is invalid.');
+
 const MONGODB_DATA_MAPPER_PROTOTYPE = {
   // Life-cycle methods.
   *initialize(options = {}) {
@@ -21,9 +25,9 @@ const MONGODB_DATA_MAPPER_PROTOTYPE = {
 
     const {dbUri, factory, collectionName} = options;
 
-    if (!isValidConnectionUri(dbUri)) throw new Error('`dbUri` is malformed.');
-    if (!isValidFactoryFunction(factory)) throw new Error('`factory` is invalid.');
-    if (!isValidCollectionName(collectionName)) throw new Error('`collectionName` is invalid.');
+    if (!isValidConnectionUri(dbUri)) throw INVALID_DB_URI_OPTION_ERROR;
+    if (!isValidFactoryFunction(factory)) throw INVALID_FACTORY_OPTION_ERROR;
+    if (!isValidCollectionName(collectionName)) throw INVALID_COLLECTION_NAME_OPTION_ERROR;
 
     const db = yield mongodb.MongoClient.connect(dbUri);
 

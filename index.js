@@ -8,12 +8,16 @@ const DEFAULT_DESTROY_OPTIONS = {
   forcefully: false,
 };
 
+const MISSING_DB_URI_OPTION_ERROR = new Error('`dbUri` is missing.');
+const MISSING_FACTORY_OPTION_ERROR = new Error('`factory` is missing.');
+const MISSING_COLLECTION_NAME_OPTION_ERROR = new Error('`collectionName` is missing.');
+
 const MONGODB_DATA_MAPPER_PROTOTYPE = {
   // Life-cycle methods.
   *initialize(options = {}) {
-    if (propertiesAreMissing(['dbUri', 'factory', 'collectionName'], options)) {
-      throw new Error('Missing `dbUri`, `factory` or `collectionName`');
-    }
+    if (propertyIsMissing('dbUri', options)) throw MISSING_DB_URI_OPTION_ERROR;
+    if (propertyIsMissing('factory', options)) throw MISSING_FACTORY_OPTION_ERROR;
+    if (propertyIsMissing('collectionName', options)) throw MISSING_COLLECTION_NAME_OPTION_ERROR;
 
     const {dbUri, factory, collectionName} = options;
 
@@ -86,8 +90,8 @@ module.exports = MONGODB_DATA_MAPPER_PROTOTYPE;
 /**
  * Helpers
  */
-function propertiesAreMissing(properties, obj) {
-  return properties.map(p => !utilities.has(obj, p)).reduce((p, c) => p && c);
+function propertyIsMissing(property, obj) {
+  return !(property in obj && obj[property]);
 }
 
 function isValidConnectionUri(uri) {

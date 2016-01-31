@@ -14,6 +14,8 @@ const OPTIONS = {
 
 const OPTIONS_WITH_MALFORMED_DB_URI = {
   dbUri: 'foo',
+  factory: Person,
+  collectionName: 'people',
 };
 
 test('#initialize throws if `dbUri` option is missing.', createTestCase(function* (assert) {

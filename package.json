@@ -21,7 +21,7 @@
     "tap-colorize": "^1.2.0"
   },
   "scripts": {
-    "test": "babel-node test | tap-colorize",
+    "test": "npm run lint && babel-node test | tap-colorize",
     "lint": "eslint index.js test/"
   },
   "author": "",

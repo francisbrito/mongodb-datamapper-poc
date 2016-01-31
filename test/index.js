@@ -24,34 +24,54 @@ test('#initialize throws if `dbUri` option is missing.', createTestCase(function
   const intializeWithMissingDbUri = createDataMapperInitializer(withMissingDbUri, testDataMapper);
   const expectedDbUriMissingMessage = /`dbUri` is missing/gi;
 
-  assert.throws( () => intializeWithMissingDbUri(), expectedDbUriMissingMessage, 'should throw if `dbUri` is missing.' );
+  assert.throws(
+    () => intializeWithMissingDbUri(),
+    expectedDbUriMissingMessage,
+    'should throw if `dbUri` is missing.'
+  );
 }));
 
 test('#initialize throws if `dbUri` option is malformed.', createTestCase(function* (assert) {
   const testDataMapper = Object.create(MongoDbDataMapper);
   const withMalformedDbUri = OPTIONS_WITH_MALFORMED_DB_URI;
-  const initializeWithMalformedDbUri = createDataMapperInitializer(withMalformedDbUri, testDataMapper)
+  const initializeWithMalformedDbUri =
+  createDataMapperInitializer(withMalformedDbUri, testDataMapper);
   const expectedDbUriMalformedMessage = /`dbUri` is malformed/gi;
 
-  assert.throws( () => initializeWithMalformedDbUri(), expectedDbUriMalformedMessage, 'should thorw if `dbUri` is malformed.' );
+  assert.throws(
+    () => initializeWithMalformedDbUri(),
+    expectedDbUriMalformedMessage,
+    'should thorw if `dbUri` is malformed.'
+  );
 }));
 
 test('#initialize throws if `factory` option is missing.', createTestCase(function* (assert) {
   const testDataMapper = Object.create(MongoDbDataMapper);
   const withMissingFactory = getOptionsWithout('factory', OPTIONS);
-  const initializeWithMissingFactory = createDataMapperInitializer(withMissingFactory, testDataMapper);
+  const initializeWithMissingFactory =
+  createDataMapperInitializer(withMissingFactory, testDataMapper);
   const expectedFactoryMissingMessage = /`factory` is missing/gi;
 
-  assert.throws( () => initializeWithMissingFactory(), expectedFactoryMissingMessage, 'should throw if `factory` is missing.' );
+  assert.throws(
+    () => initializeWithMissingFactory(),
+    expectedFactoryMissingMessage,
+    'should throw if `factory` is missing.'
+  );
 }));
 
-test('#initialize throws if `collectionName` option is missing.', createTestCase(function* (assert) {
+test('#initialize throws if `collectionName` option is missing.',
+createTestCase(function* (assert) {
   const testDataMapper = Object.create(MongoDbDataMapper);
   const withMissingCollectionName = getOptionsWithout('collectionName', OPTIONS);
-  const initializeWithMissingCollectionName = createDataMapperInitializer(withMissingCollectionName, testDataMapper);
+  const initializeWithMissingCollectionName =
+  createDataMapperInitializer(withMissingCollectionName, testDataMapper);
   const expectedCollectionNameMissingMessage = /`collectionName` is missing/gi;
 
-  assert.throws( () => initializeWithMissingCollectionName(), expectedCollectionNameMissingMessage, 'should throw if `collectionName` is missing.' );
+  assert.throws(
+    () => initializeWithMissingCollectionName(),
+    expectedCollectionNameMissingMessage,
+    'should throw if `collectionName` is missing.'
+  );
 }));
 
 function createTestCase(fn) {

@@ -51,7 +51,7 @@ test('#initialize throws if `collectionName` option is missing.', createTestCase
   const initializeWithMissingCollectionName = createDataMapperInitializer(withMissingCollectionName, testDataMapper);
   const expectedCollectionNameMissingMessage = /`collectionName` is missing/gi;
 
-  assert.throws( () => initializeWithMissingCollectionName, expectedCollectionNameMissingMessage, 'should throw if `collectionName` is missing.' );
+  assert.throws( () => initializeWithMissingCollectionName(), expectedCollectionNameMissingMessage, 'should throw if `collectionName` is missing.' );
 }));
 
 function createTestCase(fn) {
